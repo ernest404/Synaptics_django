@@ -84,10 +84,9 @@ def download_report(request):
     if summary_list:
         # Generate document
         document_stream = doc_builder(summary_list)
-
         # Set up HttpResponse
         response = HttpResponse(document_stream.getvalue(), content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
-        response['Content-Disposition'] = 'attachment; filename="summary_report_{}.docx"'.format(datetime.now().strftime("%Y%m%d"))
+        response['Content-Disposition'] = 'attachment; filename="summary_report_{}.docx"'.format(datetime.now().strftime("%Y%m%d%H%M%S"))
 
         # Optionally, clear the summary_list from session after downloading
         del request.session['summary_list']
