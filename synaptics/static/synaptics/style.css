@@ -1,7 +1,6 @@
 .banner {
   z-index: -1;
   clear: both;
-  background-image:url("/static/images/wallpaper9rb.png");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -18,7 +17,7 @@
 }
 
 .btn-ghost:hover {
-  border-color:#0ed3be ;
+  border-color: #0ed3be;
   background-color: #16a085;
   color: white;
 }
@@ -30,7 +29,7 @@
 }
 
 .btn-ghost-outlined:hover {
-  border-color:#0ed3be ;
+  border-color: #0ed3be;
   background-color: #16a085;
   color: white;
 }
@@ -51,15 +50,15 @@
 .btn-ghost-dark {
   border-color: #1abc9c;
   color: #1abc9c;
-}  
+}
 footer {
-    background:#2C2D31;
+  background: #2c2d31;
 }
 .footer-text {
-    color: #f4f4f4;
+  color: #f4f4f4;
 }
-footer a{
-    color: #f4f4f4;
+footer a {
+  color: #f4f4f4;
 }
 
 .upload-container {
@@ -76,13 +75,13 @@ footer a{
 }
 
 .scrollable-container {
-    max-height: 300px; /* Adjust based on your needs */
-    overflow-y: auto; /* Enables vertical scrolling */
-    padding: 15px;
-    border: 1px solid #ccc; /* Optional: adds a border */
-    border-radius: 5px; /* Optional: rounds the corners */
-    margin: 20px 0; /* Optional: adds some spacing around the container */
+  max-height: 300px; /* Adjust based on your needs */
+  overflow-y: auto; /* Enables vertical scrolling */
+  padding: 15px;
+  border: 1px solid #ccc; /* Optional: adds a border */
+  border-radius: 5px; /* Optional: rounds the corners */
+  margin: 20px 0; /* Optional: adds some spacing around the container */
 }
 .summary {
-    margin-bottom: 10px; /* Optional: adds spacing between summaries */
+  margin-bottom: 10px; /* Optional: adds spacing between summaries */
 }
