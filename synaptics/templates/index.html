@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block content%}
+
+<!-- Parallax Section -->
+<div class="banner d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="text-center">
+        <h3>Analyze newspaper articles</h3>
+        <p>Using technology to improve intelligence</p>
+        <a class="btn btn-ghost-sec" href="{% url 'analyze' %}">Analyze</a>
+        <a class="btn btn-ghost" href="{% url 'summarize' %}">Summarize</a>
+    </div>
+</div>
+
+{% endblock%}

@@ -1,0 +1,88 @@
+.banner {
+  z-index: -1;
+  clear: both;
+  background-image:url("/static/images/wallpaper9rb.png");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 330px 0 300px;
+  margin: 0 auto;
+  text-align: center;
+}
+.btn-ghost {
+  margin: 10px;
+  color: #fff;
+  border: 2px solid #0ed3be;
+  background: #0ed3be;
+}
+
+.btn-ghost:hover {
+  border-color:#0ed3be ;
+  background-color: #16a085;
+  color: white;
+}
+.btn-ghost-outlined {
+  margin: 10px;
+  color: #0ed3be;
+  border: 2px solid #0ed3be;
+  background: #fff;
+}
+
+.btn-ghost-outlined:hover {
+  border-color:#0ed3be ;
+  background-color: #16a085;
+  color: white;
+}
+
+.btn-ghost-sec {
+  margin: 10px;
+  color: #393637;
+  border: 2px solid #393637;
+  background: transparent;
+}
+
+.btn-ghost-sec:hover {
+  border-color: transparent;
+  background-color: #393637;
+  color: #fff;
+}
+
+.btn-ghost-dark {
+  border-color: #1abc9c;
+  color: #1abc9c;
+}  
+footer {
+    background:#2C2D31;
+}
+.footer-text {
+    color: #f4f4f4;
+}
+footer a{
+    color: #f4f4f4;
+}
+
+.upload-container {
+  cursor: pointer;
+  background-color: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 200px;
+}
+.upload-container:hover {
+  background-color: #e2e6ea;
+}
+
+.scrollable-container {
+    max-height: 300px; /* Adjust based on your needs */
+    overflow-y: auto; /* Enables vertical scrolling */
+    padding: 15px;
+    border: 1px solid #ccc; /* Optional: adds a border */
+    border-radius: 5px; /* Optional: rounds the corners */
+    margin: 20px 0; /* Optional: adds some spacing around the container */
+}
+.summary {
+    margin-bottom: 10px; /* Optional: adds spacing between summaries */
+}

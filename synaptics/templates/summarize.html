@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block content%}
+<div class="wrap contact">
+    <div class="grid grid-pad">
+        <div class="col-1-1" style=" margin-top: 100px;">
+            <form action="{% url 'summarize' %}" id="textform" method="post" class="form" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div style=" margin-left: auto; margin-right: auto; width: 60%;">
+                    <p class="comment_form_field">
+                        <label for="id_text">Upload newspaper:</label>
+                    </p>
+                    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+                    <div class="container p-5">
+                        <div class="upload-container p-5 border border-dashed" id="drop_zone"
+                            ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+                            <p>Drag and drop a PDF file here, or click to select a file</p>
+
+                            <input type="file" name="pdf_file" id="pdf_file" class="form-control" accept=".pdf"
+                                onchange="fileSelected(event)" hidden>
+                            <div id="file_info" class="text-info "></div>
+                        </div>
+                        <div style="text-align: center;">
+                            <button type="submit" class="btn btn-primary mt-3 btn-ghost">Summarize</button>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </form>
+
+            {% if summary_list|length > 0 %}
+            <div class="scrollable-container container">
+                {% for summary in summary_list %}
+                <div class="summary">
+                    {{ summary }}
+                </div>
+                {% endfor %}
+                <a class="btn read-more" href="{% url 'download_report' %}" style="float: right;"><span
+                        class="icon-printer"></span> <span style="margin-left: 1em;"> download report</span></a>
+            </div>
+            {% else %}
+            <div class="scrollable-container">No Summary</div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script>
+    // Prevent default drag behaviors
+    window.addEventListener("dragover", function (e) {
+        e = e || event;
+        e.preventDefault();
+    }, false);
+    window.addEventListener("drop", function (e) {
+        e = e || event;
+        e.preventDefault();
+    }, false);
+
+    // Drag over handler
+    function dragOverHandler(ev) {
+        ev.preventDefault();
+        ev.dataTransfer.dropEffect = 'copy';
+    }
+    function updateFileInfoDisplay(fileName) {
+        var fileInfoHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-file-earmark-pdf" viewBox="0 0 16 16">
+        <path d="M5.5 7a.5.5 0 0 1 .5-.5h1V5h-.5a.5.5 0 0 0 0 1H7a.5.5 0 0 1 0 1h-.5a.5.5 0 0 0-1 0 .5.5 0 0 1-1 0z"/>
+        <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5v4.5a1.5 1.5 0 0 0 1.5 1.5h4.5zm-1 0h-3a.5.5 0 0 1-.5-.5V1h.5L13 4.5z"/>
+        <path fill-rule="evenodd" d="M4.879 10.933a.5.5 0 0 1 .707 0l2 2a.5.5 0 0 1 0 .707l-2 2a.5.5 0 1 1-.707-.707L6.293 14 4.88 12.586a.5.5 0 0 1 0-.707z"/>
+        <path fill-rule="evenodd" d="M6.5 8a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 0 1H7v.5a.5.5 0 0 1-1 0v-2a.5.5 0 0 1 .5-.5z"/>
+        </svg>
+        <span>${fileName}</span>
+    `;
+        document.getElementById('file_info').innerHTML = fileInfoHTML;
+    }
+    // Drop handler
+    function dropHandler(ev) {
+        ev.preventDefault();
+        if (ev.dataTransfer.items) {
+            if (ev.dataTransfer.items[0].kind === 'file' && ev.dataTransfer.items[0].type.match('application/pdf')) {
+                var file = ev.dataTransfer.items[0].getAsFile();
+                document.getElementById('pdf_file').files = ev.dataTransfer.files;
+                updateFileInfoDisplay(file.name);
+            }
+        }
+    }
+
+    // Click handler to open file dialog
+    document.getElementById('drop_zone').addEventListener('click', function () {
+        document.getElementById('pdf_file').click();
+    });
+
+    // File selected via input
+    function fileSelected(ev) {
+        if (ev.target.files.length > 0 && ev.target.files[0].type.match('application/pdf')) {
+            updateFileInfoDisplay(ev.target.files[0].name);
+        }
+    }
+</script>
+
+
+
+{% endblock %}
